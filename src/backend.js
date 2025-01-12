@@ -1,23 +1,20 @@
 export const employeers = [
   {
     id: 1,
-    name: 'Jouh',
-    sername: 'Smith',
-    sallery: '1000',
+    name: 'Jouh Smith',
+    salary: '1000',
     increasePremium: false
   },
   {
     id: 2,
-    name: 'Sarah',
-    sername: 'Kagan',
-    sallery: '1300',
+    name: 'Sarah Kagan',
+    salary: '1300',
     increasePremium: false
   },
   {
     id: 3,
-    name: 'Donald',
-    sername: 'Trump',
-    sallery: '5000',
+    name: 'Donald rump',
+    salary: '5000',
     increasePremium: false
   }
 ];

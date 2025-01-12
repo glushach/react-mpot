@@ -1,9 +1,10 @@
-import EmployeesListItem from '../employees-list-item/employees-list-item';
-
-import './employees-list.css';
-
 import { readListEmployeers } from './api';
 import { useEffect, useState } from 'react';
+
+import EmployeesListItem from '../employees-list-item/employees-list-item';
+import EmployeesAddForm from '../employees-add-form/employees-add-form';
+
+import './employees-list.css';
 
 const EmployeesList = () => {
   const [employeers, setList] = useState([]);
@@ -42,21 +43,41 @@ const EmployeesList = () => {
     // Здесь должена быть отправка DELETE запроса на бекенд для удаления работчника по конкретному id
   };
 
+  const createEmployeer = (name, salary) => {
+    const maxId = employeers.reduce((max, employee) => {
+      return employee.id > max ? employee.id : max;
+    }, 0);
+
+    const newEmployee = {
+      id: maxId + 1,
+      name,
+      salary,
+      increasePremium: false
+    };
+
+    setList((employeers) => [...employeers, newEmployee]);
+
+    console.log('Old array after add new employeer', employeers);
+    // Здесь должена быть отправка CREATE запроса на бекенд для добавления нового работчника по мною сгенерированому id
+  };
+
   return (
-    <ul className="app-list list-group">
-      {employeers.map((employee) => (
-        <EmployeesListItem
-          key={employee.id}
-          id={employee.id}
-          name={employee.name}
-          surname={employee.sername}
-          sallery={employee.sallery}
-          premium={employee.increasePremium}
-          propIncreasePremium={updateEmployeer}
-          propDeleteUser={deleteEmployeer}
-        />
-      ))}
-    </ul>
+    <>
+      <ul className="app-list list-group">
+        {employeers.map((employee) => (
+          <EmployeesListItem
+            key={employee.id}
+            id={employee.id}
+            name={employee.name}
+            salary={employee.salary}
+            premium={employee.increasePremium}
+            propIncreasePremium={updateEmployeer}
+            propDeleteUser={deleteEmployeer}
+          />
+        ))}
+      </ul>
+      <EmployeesAddForm propCreateUser={createEmployeer} />
+    </>
   );
 };
 

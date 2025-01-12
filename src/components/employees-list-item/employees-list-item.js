@@ -1,7 +1,7 @@
 import './employees-list-item.css';
 
-const EmployeesListItem = ({ id, name, surname, premium, ...props }) => {
-  const { sallery, propIncreasePremium, propDeleteUser } = props;
+const EmployeesListItem = ({ id, name, premium, ...props }) => {
+  const { salary, propIncreasePremium, propDeleteUser } = props;
 
   const handleIncrease = () => {
     propIncreasePremium(id);
@@ -17,13 +17,11 @@ const EmployeesListItem = ({ id, name, surname, premium, ...props }) => {
         premium ? 'increase' : ''
       }`}
     >
-      <span className="list-group-item-label">
-        {name} {surname}
-      </span>
+      <span className="list-group-item-label">{name}</span>
       <input
         type="text"
         className="list-group-item-input"
-        defaultValue={`${sallery}$`}
+        defaultValue={`${salary}$`}
       />
       <div className="d-flex justify-content-center align-items-center">
         <button
