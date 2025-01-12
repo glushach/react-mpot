@@ -1,12 +1,20 @@
 import './employees-list-item.css';
 
-const EmployeesListItem = ({ name, sername, ...props }) => {
-  const { sallery } = props;
+const EmployeesListItem = ({ id, name, surname, premium, ...props }) => {
+  const { sallery, propIncreasePremium } = props;
+
+  const handleIncrease = () => {
+    propIncreasePremium(id);
+  };
 
   return (
-    <li className="list-group-item d-flex justify-content-between">
+    <li
+      className={`list-group-item d-flex justify-content-between ${
+        premium ? 'increase' : ''
+      }`}
+    >
       <span className="list-group-item-label">
-        {name} {sername}
+        {name} {surname}
       </span>
       <input
         type="text"
@@ -14,7 +22,11 @@ const EmployeesListItem = ({ name, sername, ...props }) => {
         defaultValue={`${sallery}$`}
       />
       <div className="d-flex justify-content-center align-items-center">
-        <button type="button" className="btn-cookie btn-sm ">
+        <button
+          type="button"
+          className="btn-cookie btn-sm "
+          onClick={handleIncrease}
+        >
           <i className="fas fa-cookie"></i>
         </button>
 

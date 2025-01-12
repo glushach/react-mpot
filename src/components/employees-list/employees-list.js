@@ -16,14 +16,34 @@ const EmployeesList = () => {
     preload();
   }, []);
 
+  const updateEmployeer = (id) => {
+    setList((employeers) =>
+      employeers.map((employee) => {
+        if (employee.id === id) {
+          return {
+            ...employee,
+            increasePremium: !employee.increasePremium
+          };
+        }
+        return employee;
+      })
+    );
+
+    console.log('Old array after updata employeer', employeers);
+    // Здесь должена быть отправка PUT запроса на бекенд для обновления работчника по конкретному id
+  };
+
   return (
     <ul className="app-list list-group">
       {employeers.map((employee) => (
         <EmployeesListItem
           key={employee.id}
+          id={employee.id}
           name={employee.name}
-          sername={employee.sername}
+          surname={employee.sername}
           sallery={employee.sallery}
+          premium={employee.increasePremium}
+          propIncreasePremium={updateEmployeer}
         />
       ))}
     </ul>
