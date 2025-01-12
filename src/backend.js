@@ -13,7 +13,7 @@ export const employeers = [
   },
   {
     id: 3,
-    name: 'Donald rump',
+    name: 'Donald Trump',
     salary: '5000',
     increasePremium: false
   }

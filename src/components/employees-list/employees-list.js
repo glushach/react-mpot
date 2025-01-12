@@ -12,6 +12,11 @@ const EmployeesList = () => {
   useEffect(() => {
     async function preload() {
       const employeers = await readListEmployeers();
+      /*
+      setInterval(() => {
+        console.log('Clear employerrs', employeers);
+      }, 60000);
+      */
       setList(employeers);
     }
     preload();
@@ -30,7 +35,7 @@ const EmployeesList = () => {
       })
     );
 
-    console.log('Old array after updata employeer', employeers);
+    console.log('Previous state after updata employeer', employeers);
     // Здесь должена быть отправка PUT запроса на бекенд для обновления работчника по конкретному id
   };
 
@@ -39,7 +44,7 @@ const EmployeesList = () => {
       employeers.filter((employee) => employee.id !== id)
     );
 
-    console.log('Old array after delete employeer', employeers);
+    console.log('Previous state after delete employeer', employeers);
     // Здесь должена быть отправка DELETE запроса на бекенд для удаления работчника по конкретному id
   };
 
@@ -57,7 +62,7 @@ const EmployeesList = () => {
 
     setList((employeers) => [...employeers, newEmployee]);
 
-    console.log('Old array after add new employeer', employeers);
+    console.log('Previous state after add new employeer', employeers);
     // Здесь должена быть отправка CREATE запроса на бекенд для добавления нового работчника по мною сгенерированому id
   };
 
