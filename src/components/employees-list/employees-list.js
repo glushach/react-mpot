@@ -33,6 +33,15 @@ const EmployeesList = () => {
     // Здесь должена быть отправка PUT запроса на бекенд для обновления работчника по конкретному id
   };
 
+  const deleteEmployeer = (id) => {
+    setList((employeers) =>
+      employeers.filter((employee) => employee.id !== id)
+    );
+
+    console.log('Old array after delete employeer', employeers);
+    // Здесь должена быть отправка DELETE запроса на бекенд для удаления работчника по конкретному id
+  };
+
   return (
     <ul className="app-list list-group">
       {employeers.map((employee) => (
@@ -44,6 +53,7 @@ const EmployeesList = () => {
           sallery={employee.sallery}
           premium={employee.increasePremium}
           propIncreasePremium={updateEmployeer}
+          propDeleteUser={deleteEmployeer}
         />
       ))}
     </ul>
