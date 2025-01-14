@@ -1,0 +1,16 @@
+// Обязательно нужно установить npm i sass --save
+// И перезапустить приложение
+@import '../../variables.scss';
+
+.card {
+  display: block;
+  background-color: $main-color;
+
+  .text {
+    color: #000;
+  }
+
+  .link {
+    color: #000;
+  }
+}
